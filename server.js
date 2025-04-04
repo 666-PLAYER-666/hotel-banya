@@ -19,8 +19,8 @@ app.use(
         connectSrc: [
           "'self'",
           "https://api.stripe.com",
-          "http://localhost:3001", // Для локальной разработки
-          "https://hotel-banya.onrender.com", // Для Render
+          "http://localhost:3001",
+          "https://hotel-banya.onrender.com",
         ],
       },
     },
