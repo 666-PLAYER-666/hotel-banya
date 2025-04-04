@@ -27113,6 +27113,7 @@ const Login = () => {
   const [otp, setOtp] = reactExports.useState("");
   const { login } = useAuth();
   const navigate = useNavigate();
+  const API_URL = "https://hotel-banya.onrender.com";
   const normalizePhone = (value) => {
     let normalized = value.replace(/\D/g, "");
     if (normalized.startsWith("8") && normalized.length === 11) {
@@ -27139,7 +27140,7 @@ const Login = () => {
     console.log("Login.jsx: Normalized phone:", normalizedPhone);
     if (normalizedPhone === "+79991234567") {
       try {
-        const response = await fetch("http://localhost:3001/api/login", {
+        const response = await fetch(`${API_URL}/api/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ phoneOrEmail: normalizedPhone, password })
@@ -27160,7 +27161,7 @@ const Login = () => {
       }
     } else {
       try {
-        const response = await fetch("http://localhost:3001/api/login", {
+        const response = await fetch(`${API_URL}/api/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ phoneOrEmail: normalizedPhone })
@@ -27182,7 +27183,7 @@ const Login = () => {
   const verifyOtp = async () => {
     const normalizedPhone = normalizePhone(phone);
     try {
-      const response = await fetch("http://localhost:3001/api/verify-otp", {
+      const response = await fetch(`${API_URL}/api/verify-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phone: normalizedPhone, otp })
@@ -31951,4 +31952,4 @@ instance.use(initReactI18next).init({
 client.createRoot(document.getElementById("root")).render(
   /* @__PURE__ */ jsxRuntimeExports.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(I18nextProvider, { i18n: instance, children: /* @__PURE__ */ jsxRuntimeExports.jsx(AuthProvider, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(BrowserRouter, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(App, {}) }) }) }) })
 );
-//# sourceMappingURL=index-B1LoMlS9.js.map
+//# sourceMappingURL=index-BzAmBZQ1.js.map

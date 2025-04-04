@@ -16,7 +16,12 @@ app.use(
         defaultSrc: ["'self'"],
         scriptSrc: ["'self'", "https://js.stripe.com"],
         frameSrc: ["'self'", "https://js.stripe.com"],
-        connectSrc: ["'self'", "https://api.stripe.com"],
+        connectSrc: [
+          "'self'",
+          "https://api.stripe.com",
+          "http://localhost:3001", // Для локальной разработки
+          "https://hotel-banya.onrender.com", // Для Render
+        ],
       },
     },
   })
@@ -391,7 +396,8 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Something went wrong!' });
 });
 
-const server = app.listen(3001, () => console.log('Server running on port 3001'));
+const port = process.env.PORT || 3001;
+const server = app.listen(port, () => console.log(`Server running on port ${port}`));
 server.setTimeout(60000);
 
 process.on('SIGTERM', () => {
