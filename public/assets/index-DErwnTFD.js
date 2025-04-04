@@ -26007,7 +26007,7 @@ var DatePicker = (
 );
 var PRESELECT_CHANGE_VIA_INPUT = "input";
 var PRESELECT_CHANGE_VIA_NAVIGATE = "navigate";
-const API_BASE_URL = "http://localhost:3001";
+const API_BASE_URL = window.location.hostname === "localhost" ? "http://localhost:3001" : "https://hotel-banya.onrender.com";
 const standardRoom = "/assets/photo1-Dj2Zpe9z.jpg";
 const luxRoom$1 = "/assets/lux-room-nC9LQGuE.jpg";
 const sauna$1 = "/assets/sauna-Dk5yTH6m.jpg";
@@ -31952,4 +31952,4 @@ instance.use(initReactI18next).init({
 client.createRoot(document.getElementById("root")).render(
   /* @__PURE__ */ jsxRuntimeExports.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(I18nextProvider, { i18n: instance, children: /* @__PURE__ */ jsxRuntimeExports.jsx(AuthProvider, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(BrowserRouter, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(App, {}) }) }) }) })
 );
-//# sourceMappingURL=index-BHzK_grV.js.map
+//# sourceMappingURL=index-DErwnTFD.js.map

@@ -120,7 +120,6 @@ app.post('/api/login', (req, res) => {
   res.status(200).json({ token, message: 'OTP sent to server console' });
 });
 
-// Убрали authenticateToken для /api/verify-otp
 app.post('/api/verify-otp', (req, res) => {
   const { phone, otp } = req.body;
   const normalizedPhone = normalizePhone(phone);
