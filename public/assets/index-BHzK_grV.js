@@ -27113,7 +27113,7 @@ const Login = () => {
   const [otp, setOtp] = reactExports.useState("");
   const { login } = useAuth();
   const navigate = useNavigate();
-  const API_URL = "https://hotel-banya.onrender.com";
+  const API_URL = window.location.hostname === "localhost" ? "http://localhost:3001" : "https://hotel-banya.onrender.com";
   const normalizePhone = (value) => {
     let normalized = value.replace(/\D/g, "");
     if (normalized.startsWith("8") && normalized.length === 11) {
@@ -27188,7 +27188,6 @@ const Login = () => {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`
-          // Добавляем токен
         },
         body: JSON.stringify({ phone: normalizedPhone, otp })
       });
@@ -31953,4 +31952,4 @@ instance.use(initReactI18next).init({
 client.createRoot(document.getElementById("root")).render(
   /* @__PURE__ */ jsxRuntimeExports.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(I18nextProvider, { i18n: instance, children: /* @__PURE__ */ jsxRuntimeExports.jsx(AuthProvider, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(BrowserRouter, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(App, {}) }) }) }) })
 );
-//# sourceMappingURL=index-DXL4U9BO.js.map
+//# sourceMappingURL=index-BHzK_grV.js.map
