@@ -27150,7 +27150,6 @@ const Login = () => {
           localStorage.setItem("token", data.token);
           console.log("Login.jsx: Admin token saved:", data.token);
           await login({ phone: normalizedPhone });
-          console.log("Login.jsx: After login call for admin");
           navigate("/admin");
         } else {
           alert(data.error || "Invalid admin password");
@@ -27182,22 +27181,24 @@ const Login = () => {
   };
   const verifyOtp = async () => {
     const normalizedPhone = normalizePhone(phone);
+    const token = localStorage.getItem("token");
     try {
       const response = await fetch(`${API_URL}/api/verify-otp`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+          // Добавляем токен
+        },
         body: JSON.stringify({ phone: normalizedPhone, otp })
       });
       const data = await response.json();
       if (response.ok && data.success) {
         console.log("Login.jsx: OTP verified for:", normalizedPhone);
-        const token = localStorage.getItem("token");
-        console.log("Login.jsx: Token before login:", token);
         await login({ phone: normalizedPhone });
-        console.log("Login.jsx: After login call for user");
         navigate("/profile");
       } else {
-        alert("Invalid OTP");
+        alert(data.error || "Invalid OTP");
       }
     } catch (error) {
       console.error("Login.jsx: OTP verification error:", error);
@@ -31952,4 +31953,4 @@ instance.use(initReactI18next).init({
 client.createRoot(document.getElementById("root")).render(
   /* @__PURE__ */ jsxRuntimeExports.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(I18nextProvider, { i18n: instance, children: /* @__PURE__ */ jsxRuntimeExports.jsx(AuthProvider, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(BrowserRouter, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(App, {}) }) }) }) })
 );
-//# sourceMappingURL=index-BzAmBZQ1.js.map
+//# sourceMappingURL=index-DXL4U9BO.js.map
