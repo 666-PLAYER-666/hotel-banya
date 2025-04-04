@@ -1,0 +1,2 @@
+dist/assets/banya-video-17F0WAFf.mp4
+public/assets/banya-video-17F0WAFf.mp4
